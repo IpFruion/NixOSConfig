@@ -1,4 +1,4 @@
-{ lib, config, pkgs, ... }:
+{ lib, config, programs, ... }:
 
 {
   options.zsh = {
@@ -7,15 +7,15 @@
      };
   };
 
-
-  home-manager.users."djlock".programs.zsh = {
+  config = {
+  programs.zsh = {
      enable = true;
      shellAliases = {
        apply-system = "sudo nixos-rebuild switch --flake ~/NixOSConfig#${config.zsh.flakeTarget}";
      };
-     autoSuggestions.enable = true;
+     autosuggestions.enable = true;
      syntaxHighlighting.enable = true;
-     oh-my-zsh  = {
+     ohMyZsh  = {
        enable = true;
        plugins = [ 
 	 "web-search"
@@ -23,4 +23,6 @@
        theme = "clean";
      };
   };
+};
+
 }

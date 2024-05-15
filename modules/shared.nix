@@ -9,7 +9,7 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # User Settings
-  networking.hostname = "djlock";
+  networking.hostName = "djlock";
 
   users.users.djlock = {
     hashedPassword = "$6$1YKQdSAE1aYdzE1Y$rowV9zeuWt2h9u9R0AkDReo1/wOFyTLnzUFvjxfdXj04VuvR5haHsX4aBiCtFufwoy7HIQMDiiIVgiLt5gOW1/";
