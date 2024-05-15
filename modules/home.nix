@@ -36,10 +36,7 @@
 
   programs.zsh = {
      enable = true;
-     shellAliases = {
-       apply-system = "sudo nixos-rebuild switch --flake ~/NixOSConfig#default";
-     };
-     enableAutosuggestions = true;
+     autoSuggestions.enable = true;
      syntaxHighlighting.enable = true;
      oh-my-zsh  = {
        enable = true;

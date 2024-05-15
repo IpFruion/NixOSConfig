@@ -7,17 +7,28 @@
 {
   imports =
     [ 
+      ../../modules/shared.nix
+      ../../modules/zsh.nix
       ./hardware-configuration.nix
       inputs.home-manager.nixosModules.default
     ];
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  # nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  zsh.flakeTarget = "default";
+
+  # home-manager = {
+  #   extraSpecialArgs = {inherit inputs;};
+  #   users = {
+  #     "djlock" = import ../../home.nix;
+  #   };
+  # };
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "djlock"; # Define your hostname.
+  # networking.hostName = "djlock"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -52,12 +63,6 @@
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
-  home-manager = {
-    extraSpecialArgs = {inherit inputs;};
-    users = {
-      "djlock" = import ../../home.nix;
-    };
-  };
 
   # Configure keymap in X11
   services.xserver = {
@@ -88,31 +93,30 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  users.users.djlock = {
-    hashedPassword = "$6$1YKQdSAE1aYdzE1Y$rowV9zeuWt2h9u9R0AkDReo1/wOFyTLnzUFvjxfdXj04VuvR5haHsX4aBiCtFufwoy7HIQMDiiIVgiLt5gOW1/";
-    isNormalUser = true;
-    description = "Derrick Lockwood";
-    extraGroups = [ "networkmanager" "wheel" ];
-    shell = pkgs.zsh;
-  };
+  # users.users.djlock = {
+  #   hashedPassword = "$6$1YKQdSAE1aYdzE1Y$rowV9zeuWt2h9u9R0AkDReo1/wOFyTLnzUFvjxfdXj04VuvR5haHsX4aBiCtFufwoy7HIQMDiiIVgiLt5gOW1/";
+  #   isNormalUser = true;
+  #   description = "Derrick Lockwood";
+  #   extraGroups = [ "networkmanager" "wheel" ];
+  #   shell = pkgs.zsh;
+  # };
 
   # Install firefox.
-  programs.firefox.enable = true;
-  programs.hyprland.enable = true;
-  programs.zsh.enable = true;
+  # programs.firefox.enable = true;
+  # programs.hyprland.enable = true;
 
   # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
+  # nixpkgs.config.allowUnfree = true;
   nixpkgs.config.allowUnsupportedSystem = true;
 
 
-  environment.systemPackages = with pkgs; [
-   git
-   gh
-   neovim
-   tmux
-   home-manager
-  ];
+  # environment.systemPackages = with pkgs; [
+  #  git
+  #  gh
+  #  neovim
+  #  tmux
+  #  home-manager
+  # ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

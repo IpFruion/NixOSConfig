@@ -18,5 +18,12 @@
         inputs.home-manager.nixosModules.default
       ];
     };
+    nixosConfigurations.workplace = nixpkgs.lib.nixosSystem {
+      specialArgs = {inherit inputs;};
+      modules = [
+        ./hosts/workplace/configuration.nix
+        inputs.home-manager.nixosModules.default
+      ];
+    };
   };
 }
