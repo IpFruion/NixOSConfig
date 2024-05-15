@@ -6,7 +6,7 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [ 
       ./hardware-configuration.nix
       inputs.home-manager.nixosModules.default
     ];
@@ -55,7 +55,7 @@
   home-manager = {
     extraSpecialArgs = {inherit inputs;};
     users = {
-      "djlock" = import ./home.nix;
+      "djlock" = import ../../home.nix;
     };
   };
 
@@ -88,7 +88,6 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.djlock = {
     hashedPassword = "$6$1YKQdSAE1aYdzE1Y$rowV9zeuWt2h9u9R0AkDReo1/wOFyTLnzUFvjxfdXj04VuvR5haHsX4aBiCtFufwoy7HIQMDiiIVgiLt5gOW1/";
     isNormalUser = true;
@@ -107,12 +106,10 @@
   nixpkgs.config.allowUnsupportedSystem = true;
 
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
    git
+   gh
    neovim
-   iterm2
    tmux
    home-manager
   ];
