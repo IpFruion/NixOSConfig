@@ -1,2 +1,2 @@
 #!/bin/sh
-sudo nixos-rebuild switch --flake ~/NixOSConfig#default
+sudo nixos-rebuild switch --flake ~/NixOSConfig#$1
