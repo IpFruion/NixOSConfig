@@ -34,19 +34,6 @@
     # '')
   ];
 
-  programs.zsh = {
-     enable = true;
-     autoSuggestions.enable = true;
-     syntaxHighlighting.enable = true;
-     oh-my-zsh  = {
-       enable = true;
-       plugins = [ 
-	 "web-search"
-       ];
-       theme = "clean";
-     };
-  };
-
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {

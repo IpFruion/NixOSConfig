@@ -22,7 +22,7 @@
   home-manager = {
     extraSpecialArgs = {inherit inputs;};
     users = {
-      "djlock" = import ./home.nix
+      "djlock" = import ./home.nix;
     };
   };
 
